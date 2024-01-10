@@ -47,7 +47,7 @@ class FiltersPartial extends FiltersExact implements Filter
         $value = mb_strtolower((string) $value, 'UTF8');
 
         return [
-            "{$property} ILIKE ?",
+            '('.$property.' COLLATE "en_US.utf8") ILIKE ?',
             ['%'.self::escapeLike($value).'%'],
         ];
     }
